@@ -68,7 +68,7 @@ const Hero = () => {
 
                 <div className='relative rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]'>
                   <img
-                    src='/public/portfolio2-pic.png'
+                    src='/portfolio2-pic.png'
                     alt='Developer at work'
                     className='w-full h-full object-cover'
                   />
