@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   email: 'jkeya357@gmail.com',
   location: 'Cape Town, WC',
   tagline: '',
-  resume: '/public/Kheya_Joao-cv.pdf',
+  resume: 'Software-Engineer_Kheya.pdf',
   bio: [
     "Motivated and detail-oriented Software Engineer with hands-on experience in building full-stack applications, applying industry standards while thoughtfully innovating to meet evolving consumer expectations. Passionate about writing clean, efficient code and continuously learning new technologies and skills."
   ]
