@@ -21,10 +21,10 @@ const ProjectCard = ({project}) => {
                         href={demo}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='p-2.5 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hovers:scale-110'
+                        className='p-2.5 bg-white/10 backdrop-blur-md rounded-lg border border-gray-700 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hovers:scale-110'
                         title='View Demo'
                     >
-                        <ExternalLink className='w-4 h-4 text-white'/>
+                        <ExternalLink className='w-4 h-4 text-gray-700'/>
 
                     </a>
                 )}
@@ -34,10 +34,10 @@ const ProjectCard = ({project}) => {
                         href={githubUrl}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='p-2.5 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hovers:scale-110'
+                        className='p-2.5 bg-white/10 backdrop-blur-md rounded-lg border border-gray-700 hover:bg-primary/30 hover:border-primary/50 transition-all duration-300 hovers:scale-110'
                         title='View Code'
                     >
-                        <Github className='w-4 h-4 text-white'/>
+                        <Github className='w-4 h-4 text-gray-700'/>
 
                     </a>
                 )}
@@ -54,7 +54,7 @@ const ProjectCard = ({project}) => {
                 <h3 className='text-xl font-semibold text-white mb-2 group-hover:text-[#A8FF8D] transition-colors duration-300'>
                     {title}
                 </h3>
-                <p className='text-white/60 test-sm leading-relaxed line-clamp-2'>
+                <p className='text-white/60 text-sm leading-relaxed overflow-hidden max-h-[3.5rem] group-hover:max-h-[12rem] transition-[max-height] duration-300 ease-in-out'>
                     {description}
                 </p>
             </div>

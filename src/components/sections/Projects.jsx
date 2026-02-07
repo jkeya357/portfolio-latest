@@ -23,25 +23,50 @@ const Projects = () => {
         }
     }
 
+    const handleScroll = () => {
+        const container = scrollContainerRef.current
+        if (!container) return
+
+        const firstCard = container.querySelector('[data-card]')
+        if (!firstCard) return
+
+        const cardWidth = firstCard.offsetWidth + 24
+        const index = Math.round(container.scrollLeft / cardWidth)
+
+        setCurrentIndex(prev =>
+            prev === index ? prev : Math.min(Math.max(index, 0), maxIndex)
+        )
+    }
+
+    const visibleCards = 3;
+    const maxIndex = Math.max(0, filteredProjects.length - visibleCards)
+
     const scrollToIndex = (index) => {
+        if (index < 0 || index > maxIndex || index === currentIndex) return
 
         setCurrentIndex(index)
-        if(scrollContainerRef.current){
-            const container = scrollContainerRef.current
-            const cardWidth = container.offsetWidth / 3
-            container.scrollTo({left: cardWidth * index, behavior: 'smooth'})
-        }
+
+        const container = scrollContainerRef.current
+        if (!container) return
+
+        const firstCard = container.querySelector('[data-card]')
+        if (!firstCard) return
+
+        const cardWidth = firstCard.offsetWidth + 24 // 24px = gap-6
+        container.scrollTo({
+            left: cardWidth * index,
+            behavior: 'smooth'
+        })
     }
 
     const nextSlide = () => {
-        const maxIndex = Math.max(0, filteredProjects.length - 3)
         const newIndex = Math.min(currentIndex + 1, maxIndex)
-        scrollToIndex(newIndex)
+        scrollToIndex(Math.min(currentIndex + 1, maxIndex))
     }
 
     const prevSlide = () => {
-        const newIndex = Math.max(currentIndex - 1, 0)
-        scrollToIndex(newIndex)
+        const newIndex = Math.max(0, currentIndex - 1)
+        scrollToIndex(Math.max(currentIndex - 1,  0))
     }
 
     const categoryIcons = {
@@ -102,13 +127,15 @@ const Projects = () => {
             <div className="relative">
                 <div 
                     ref={scrollContainerRef}
+                    onScroll={handleScroll}
                     className="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
                 >
                     <div className="flex gap-6 pb-4">
                         {filteredProjects.map((project, index) => (
                             <div
                                 key={project.id}
-                                className="w-full md:w-[calc(50%-12px)] lg:w-[cal(33.333%-16px)] shrink-0 snap-start"
+                                data-card
+                                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start"
                             >
                                 <ProjectCard project={project}/>
                             </div>
@@ -121,7 +148,7 @@ const Projects = () => {
                         <button
                             onClick={prevSlide}
                             disabled={currentIndex === 0}
-                            className="flex absolute left-0 top-1/2 -translate-y-1/2 -transalte-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop:blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                            className="flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop:blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
                             aria-label="Previous projects"
                         >
                             <ChevronLeft className="w-6 h-6 text-white"/>
@@ -129,8 +156,8 @@ const Projects = () => {
 
                         <button
                             onClick={nextSlide}
-                            disabled={currentIndex >= filteredProjects.length - 3}
-                            className="flex absolute right-0 top-1/2 -translate-y-1/2 -transalte-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop:blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+                            disabled={currentIndex >= maxIndex}
+                            className="flex absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop:blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
                             aria-label="Next projects"
                         >
                             <ChevronRight className="w-6 h-6 text-white"/>
@@ -139,7 +166,7 @@ const Projects = () => {
                 )}
                 {filteredProjects.length > 3 && (
                     <div className="flex items-center justify-center gap-2 mt-8">
-                        {Array.from({length: Math.max(0, filteredProjects.length - 2)}).map((_, index) => (
+                        {Array.from({length: maxIndex + 1}).map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => scrollToIndex(index)}
