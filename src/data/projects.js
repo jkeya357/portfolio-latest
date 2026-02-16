@@ -36,17 +36,28 @@ export const projects = [
 
   {
     id: 4,
+    title: 'AI Dental-Assistant',
+    description: 'A full-stack blogging platform that enables users to create, edit, and publish posts with persistent storage. Developed using Java and PostgreSQL on the backend and a React frontend for a smooth content management experience.',
+    image: '/images/projects/dental-Ai.png',
+    category: 'Web Apps',
+    technologies: ['Nextjs', 'React', 'Postgres', 'Tailwind','Clerk'],
+    demo: 'https://dental-app-2xjr.vercel.app/',
+    githubUrl: 'https://github.com/jkeya357/dental-app'
+  },
+
+  {
+    id: 5,
     title: 'Netflix App',
     description: 'A Netflix-inspired web application that showcases movies and TV shows with a clean, responsive UI. Built using React and Firebase for authentication and data handling, focusing on modern layout and user experience.',
     image: '/images/projects/netflix-project.png',
     category: 'Web Apps',
-    technologies: ['React', 'Firebase', 'CSS'],
+    technologies: ['React', 'Firebase', 'Tailwind'],
     demo: 'https://web-dev-app-s.vercel.app/',
     githubUrl: 'https://github.com/jkeya357/WebDev-App-s'
   },
 
   {
-    id: 5,
+    id: 6,
     title: 'YouTube App',
     description: 'A YouTube-style video browsing application built with React, HTML, and CSS. Focused on recreating core UI components and layouts, demonstrating responsive design and front-end fundamentals.',
     image: '/images/projects/youtube-project.png',
@@ -57,4 +68,4 @@ export const projects = [
   },
 ]
 
-export const categories = ['All', 'Web Apps', 'UI Components', 'Full Stack']
+export const categories = ['All', 'Web Apps','Full Stack']

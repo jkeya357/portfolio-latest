@@ -72,7 +72,6 @@ const Projects = () => {
     const categoryIcons = {
         'All': Target,
         'Web Apps': Globe,
-        'UI Components': Palette,
         'Full Stack': Zap
     }
 
