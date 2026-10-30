@@ -1,7 +1,6 @@
-import {useState} from 'react'
-import { Download, Code2, Sparkle } from 'lucide-react'
-import { SiJavascript , SiSpringboot, SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiPostgresql, SiRedux, SiMongodb   } from 'react-icons/si'
-import { FaJava, FaAws  } from "react-icons/fa";
+import { Download, Code2, Sparkle, ShieldCheck, TestTube2 } from 'lucide-react'
+import { SiJavascript, SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiExpress, SiPostgresql, SiRedis, SiDocker, SiOpenai } from 'react-icons/si'
+import { FaJava, FaAws } from "react-icons/fa";
 import { PERSONAL_INFO, ABOUT_STATS } from '../../utils/constants'
 import RadialGradientBackground from '../backgrounds/RadialGradientBackground'
 import FadeIn from '../animations/FadeIn'
@@ -9,18 +8,18 @@ import FadeIn from '../animations/FadeIn'
 const About = () => {
 
   const skills = [
-    {name: 'Java', icon: FaJava, color: '#61DAFB'},
-    {name: 'Springbbot', icon: SiSpringboot, color: '#61DAFB'},
-    {name: 'JavaScript', icon: SiJavascript, color: '#61DAFB'},
-    {name: 'React.js', icon: SiReact, color: '#61DAFB'},
-    {name: 'Next.js', icon: SiNextdotjs, color: '#000000'},
-    {name: 'TypeScript', icon: SiTypescript, color: '#3178c6'},
-    {name: 'Tailwind.css', icon: SiTailwindcss, color: '#06B6D4'},
-    {name: 'Node.js', icon: SiNodedotjs, color: '#339933'},
-    {name: 'PostgreSQL', icon: SiPostgresql, color: '#47A248'},
-    {name: 'Redux', icon: SiRedux , color: '#47A248'},
-    {name: 'MongoDB', icon: SiMongodb  , color: '#47A248'},
-    {name: 'AWS', icon: FaAws   , color: '#47A248'},
+    {name: 'Java', icon: FaJava},
+    {name: 'TypeScript', icon: SiTypescript},
+    {name: 'JavaScript', icon: SiJavascript},
+    {name: 'React', icon: SiReact},
+    {name: 'Next.js', icon: SiNextdotjs},
+    {name: 'Node.js', icon: SiNodedotjs},
+    {name: 'Express', icon: SiExpress},
+    {name: 'PostgreSQL', icon: SiPostgresql},
+    {name: 'Redis', icon: SiRedis},
+    {name: 'Docker', icon: SiDocker},
+    {name: 'AWS', icon: FaAws},
+    {name: 'OpenAI', icon: SiOpenai},
   ]
 
   return <section id='about' className='relative py-20 bg-black overflow-hidden'>
@@ -34,7 +33,7 @@ const About = () => {
               <div className='inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/30 bg-primary/10 rounded-full w-fit'>
                 <Code2 className='w-4 h-4 text-primary'/>
                 <span className='text-sm text-primary font-medium'>
-                  Software Engineer
+                  {PERSONAL_INFO.title}
                 </span>
                 <Sparkle className='w-4 h-4 text-primary'/>
               </div>
@@ -42,7 +41,7 @@ const About = () => {
 
             <FadeIn delay={100}>
               <h2 className='text-4xl lg:text-5xl font-normal text-white leading-tight'>
-                Engineering and Deploying production ready achitecture with efficiency and consistency
+                From schema to API to UI to AWS to the Play Store, I own the whole product
               </h2>
             </FadeIn>
             <FadeIn delay={200}>
@@ -96,7 +95,7 @@ const About = () => {
                   <div className='flex-1'>
                     <h3 className='text-lg font-semibold text-white mb-2'>Expertise</h3>
                     <p className='text-sm text-white/70 leading-relaxed'>
-                     Specialized in designing and building scalable, maintainable, production-ready software applications using modern technologies and best practices.
+                     End-to-end owner of production software: relational data models and versioned migrations, typed REST APIs, React/TypeScript front-ends, AWS delivery and Android release. Delivered two live education platforms for Saving Grace Education Group.
                     </p>
                   </div>
                 </div>
@@ -108,24 +107,24 @@ const About = () => {
               <div className='absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300'></div>
               <div className='relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full'>
                 <div className='p-3 bg-primary/10 rounded-xl w-fit mb-4'>
-                  <Sparkle className='w-5 h-5 text-primary'/>
+                  <TestTube2 className='w-5 h-5 text-primary'/>
                 </div>
-                <h3 className='text-base font-semibold text-white mb-2'>Clean Code</h3>
+                <h3 className='text-base font-semibold text-white mb-2'>Tested & Automated</h3>
                 <p className='text-sm text-white/70 leading-relaxed'>
-                  Writing maintanable and effecient code, while testing and deploying as well
+                  GitHub Actions pipelines that gate every deploy on typecheck, Vitest/Supertest unit tests and a Playwright smoke suite
                 </p>
               </div>
             </div>
 
             <div className='relative group'>
               <div className='absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300'></div>
-              <div className='relative bg-white/5 border bordeer-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full'>
+              <div className='relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full'>
                 <div className='p-3 bg-primary/10 rounded-xl w-fit mb-4'>
-                  <Download className='w-5 h-5 text-primary'/>
+                  <ShieldCheck className='w-5 h-5 text-primary'/>
                 </div>
-                <h3 className='text-base font-semibold text-white mb-2'>Performance</h3>
+                <h3 className='text-base font-semibold text-white mb-2'>Secure & Observable</h3>
                 <p className='text-sm text-white/70 leading-relaxed'>
-                  Optimizing for speed, effeciency, and scalability in every project
+                  Strict CSP, Redis-backed rate limiting on AI endpoints, Sentry monitoring and S3 media storage to keep costs down
                 </p>
               </div>
             </div>
@@ -135,17 +134,17 @@ const About = () => {
                 <div className='relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300'>
                   <div className='grid grid-cols-3 gap-6 text-center'>
                     <div>
-                      <div className='text-2xl font-bold text-primary mb-1'>100%</div>
-                      <div className='text-xs text-white/60'>Client Satisfaction</div>
+                      <div className='text-2xl font-bold text-primary mb-1'>Plan</div>
+                      <div className='text-xs text-white/60'>Design before building</div>
                     </div>
                     <div>
-                      <div className='text-2xl font-bold text-primary mb-1'>24/7</div>
-                      <div className='text-xs text-white/60'>Support Available</div>
+                      <div className='text-2xl font-bold text-primary mb-1'>Document</div>
+                      <div className='text-xs text-white/60'>So anyone can pick up the code</div>
                     </div>
                     <div>
                       <div>
-                        <div className='text-2xl font-bold text-primary mb-1'>Fast</div>
-                        <div className='text-xs text-white/60'>Delivery Time</div>
+                        <div className='text-2xl font-bold text-primary mb-1'>Debug</div>
+                        <div className='text-xs text-white/60'>Logs and tests to root cause</div>
                       </div>
                     </div>
                   </div>
@@ -159,7 +158,7 @@ const About = () => {
         <div className='flex flex-col items-center gap-8'>
           <div className='text-center'>
             <h3 className='text-2xl font-normal text-white mb-2'>Tech Stack & Expertise</h3>
-            <p className='text-sm text-white/60'>Technologies i work with to build amzing apps</p>
+            <p className='text-sm text-white/60'>The core technologies I build and ship production apps with</p>
           </div>
 
           <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full max-w-4xl'>

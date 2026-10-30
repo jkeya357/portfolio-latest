@@ -1,35 +1,14 @@
 import React from 'react'
-import {skills} from '../../data/skills'
+import { skills, skillCategories } from '../../data/skills'
 import * as Icons from 'lucide-react'
 import FadeIn from '../animations/FadeIn'
 
 const Skills = () => {
 
-    const skillCategories = {
-        'Frontend Development': [
-            skills.find(s => s.name === 'React.js'),
-            skills.find(s => s.name === 'JavaScript'),
-            skills.find(s => s.name === 'TypeScript'),
-            skills.find(s => s.name === 'Next.js'),
-            skills.find(s => s.name === 'Tailwind CSS'),
-            skills.find(s => s.name === 'Redux')
-        ].filter(Boolean),
-        'Backend & APIs': [
-            skills.find(s => s.name === 'Java'),
-            skills.find(s => s.name === 'Node.js'),
-            skills.find(s => s.name === 'REST APIs'),
-            skills.find(s => s.name === 'Springboot'),
-            skills.find(s => s.name === 'Express'),
-        ].filter(Boolean),
-        'DevOps': [
-            skills.find(s => s.name === 'Git & GitHub'),
-            skills.find(s => s.name === 'AWS'),
-            skills.find(s => s.name === 'CI/CD'),
-            skills.find(s => s.name === 'Testing'),
-            skills.find(s => s.name === 'Docker'),
-            skills.find(s => s.name === 'Kubernetes'),
-        ].filter(Boolean),
-    }
+    const groupedSkills = skillCategories.map((category) => ({
+        category,
+        items: skills.filter((skill) => skill.category === category),
+    })).filter((group) => group.items.length > 0)
 
     const getProficiencyLevel = (level) => {
         const levels = {
@@ -42,7 +21,7 @@ const Skills = () => {
 
     const getLevelColor = (level) => {
         const colors = {
-            'Expert': 'text-[#8DFF69] bg-[#8DFF69]/20 border-[#8DFF69/30',
+            'Expert': 'text-[#8DFF69] bg-[#8DFF69]/20 border-[#8DFF69]/30',
             'Advanced': 'text-cyan-400 bg-cyan-500/20 border-cyan-500/30',
             'Intermediate': 'text-emerald-400 bg-emerald-500/20 border-emerald-500/30',
         }
@@ -66,33 +45,33 @@ const Skills = () => {
                     Skills & Technologies
                 </h2>
                 <p className='text-lg text-white/60 max-w-2xl mx-auto'>
-                    A comprehensive overview of my technical skills and profeciency levels
+                    The stack I use to take a product from schema to API to UI to cloud, and the AI, auth and mobile tooling around it
                 </p>
             </div>
         </FadeIn>
 
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
-            {Object.entries(skillCategories).map(([category, categorySkills], categoryIndex) => (
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {groupedSkills.map(({category, items}, categoryIndex) => (
                 <FadeIn key={category} delay={categoryIndex * 100}>
-                    <div className='relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300'>
+                    <div className='relative h-full bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300'>
                         <div className='flex items-center gap-3 mb-6 pb-4 border-b border-white/10'>
                             <div className='w-1 h-8 bg-linear-to-b from-primary/30 to-primary/10 rounded-full'></div>
                             <h3 className='text-xl font-medium text-white'>{category}</h3>
                         </div>
 
                         <div className='space-y-5'>
-                            {categorySkills.map((skill, skillIndes) => {
+                            {items.map((skill) => {
                                 const IconComponent = Icons[skill.icon] || Icons.Code2;
-                                const profeciency = getProficiencyLevel(skill.level)
+                                const proficiency = getProficiencyLevel(skill.level)
 
                                 return(
                                     <div key={skill.id} className='space-y-2'>
-                                        <div className='flex items-center justify-between'>
-                                            <div className='flex items-center gap-3'>
-                                                <div className='p-2 bg-white/5 rounded-lg'>
+                                        <div className='flex items-center justify-between gap-3'>
+                                            <div className='flex items-center gap-3 min-w-0'>
+                                                <div className='p-2 bg-white/5 rounded-lg shrink-0'>
                                                     <IconComponent className='w-4 h-4 text-primary'/>
                                                 </div>
-                                                <div>
+                                                <div className='min-w-0'>
                                                     <div className='text-sm font-medium text-white'>
                                                         {skill.name}
                                                     </div>
@@ -101,16 +80,15 @@ const Skills = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span className={`text-xs px-2 py-1 rounded-full border ${getLevelColor(skill.level)}`}>
+                                            <span className={`text-xs px-2 py-1 rounded-full border shrink-0 ${getLevelColor(skill.level)}`}>
                                                 {skill.level}
                                             </span>
                                         </div>
                                         <div className='relative h-1.5 bg-white/5 rounded-full overflow-hidden'>
                                             <div
                                                 className='absolute top-0 left-0 h-full bg-linear-to-r from-primary/10 to-primary/80 rounded-full transition-all duration-1000 ease-out'
-                                                style={{width: `${profeciency}%`}}
+                                                style={{width: `${proficiency}%`}}
                                             >
-
                                             </div>
                                         </div>
                                     </div>
@@ -118,9 +96,7 @@ const Skills = () => {
                             })}
                         </div>
 
-                        <div className='absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5 group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none'>
-
-                        </div>
+                        <div className='absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none'></div>
                     </div>
                 </FadeIn>
             ))}

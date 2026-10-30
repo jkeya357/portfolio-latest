@@ -1,7 +1,6 @@
-import {useState} from 'react'
 import { ChevronDown, Star } from 'lucide-react'
-import { SiReact, SiNextdotjs, SiNodedotjs, SiTypescript, SiJavascript } from 'react-icons/si'
-import { FaJava, FaDatabase} from "react-icons/fa";
+import { SiReact, SiNodedotjs, SiTypescript, SiPostgresql, SiOpenai, SiDocker } from 'react-icons/si'
+import { FaJava, FaAws } from "react-icons/fa";
 import { PERSONAL_INFO, STATS } from '../../utils/constants'
 import { scrollToSection } from '../../hooks/useScrollSpy'
 import FadeIn from '../animations/FadeIn'
@@ -25,12 +24,12 @@ const Hero = () => {
             </FadeIn>
             <FadeIn delay={100}>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight'>
-                Software Engineer Portfolio
+                Full-Stack Software Developer who ships complete products
               </h1>
             </FadeIn>
             <FadeIn delay={200}>
               <p className='text-lg text-white/70 max-w-[550px] mb-8'>
-                As an experienced Software Engineer, I have continuously upskilled to become a highly competent engineer, working with advanced tools to develop and deploy scalable, production-ready full-stack applications using modern technologies that are clean, maintainable, and accessible to developers worldwide.I have built my career on delivering high-quality solutions on time, with a strong focus on reliability, performance, and long-term maintainability.
+                Java and TypeScript developer with 4+ years building production web apps. I own the whole stack, from data model and REST API to React front-end, AWS pipeline and app-store release. Most recently I built and launched a live AI tutoring platform used by school-age learners in South Africa.
               </p>
             </FadeIn>
             <FadeIn delay={300}>
@@ -80,24 +79,25 @@ const Hero = () => {
                         <FaJava className='w-full h-full text-primary'/>
                       </div>
                       <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
-                        <SiJavascript className='w-full h-full text-primary'/>
-                      </div>
-                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
                         <SiTypescript className='w-full h-full text-primary'/>
                       </div>
                       <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
                         <SiReact className='w-full h-full text-primary'/>
                       </div>
-                    
-                      <div className='w-w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
-                        <SiNextdotjs className='w-full text-primary'/>
+                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+                        <SiNodedotjs className='w-full h-full text-primary'/>
                       </div>
-                    
-                      <div className='w-w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
-                        <SiNodedotjs className='w-full text-primary'/>
+                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+                        <SiPostgresql className='w-full h-full text-primary'/>
                       </div>
-                      <div className='w-w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
-                        <FaDatabase className='w-full text-primary'/>
+                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+                        <FaAws className='w-full h-full text-primary'/>
+                      </div>
+                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+                        <SiDocker className='w-full h-full text-primary'/>
+                      </div>
+                      <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+                        <SiOpenai className='w-full h-full text-primary'/>
                       </div>
                     </div>
                   </FadeIn>

@@ -29,6 +29,8 @@ export const useScrollSpy = (sectionIds, offset = 100) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [sectionIds, offset])
+
+  return activeSection
 }
 
 export const scrollToSection = (sectionId, offset = 80) => {

@@ -1,6 +1,6 @@
 import React,{ useState, useRef } from "react"
 import {categories, projects} from "../../data/projects"
-import { Briefcase, Sparkles, Target, Globe, Palette, Zap, ChevronLeft, ChevronRight } from "lucide-react"
+import { Briefcase, Target, Globe, Zap, Rocket, ChevronLeft, ChevronRight } from "lucide-react"
 import ProjectCard from "../ui/ProjectCard"
 import FadeIn from "../animations/FadeIn"
 
@@ -60,17 +60,16 @@ const Projects = () => {
     }
 
     const nextSlide = () => {
-        const newIndex = Math.min(currentIndex + 1, maxIndex)
         scrollToIndex(Math.min(currentIndex + 1, maxIndex))
     }
 
     const prevSlide = () => {
-        const newIndex = Math.max(0, currentIndex - 1)
-        scrollToIndex(Math.max(currentIndex - 1,  0))
+        scrollToIndex(Math.max(currentIndex - 1, 0))
     }
 
     const categoryIcons = {
         'All': Target,
+        'Live Products': Rocket,
         'Web Apps': Globe,
         'Full Stack': Zap
     }
@@ -90,7 +89,7 @@ const Projects = () => {
                     <span className="text:sm text-primary font-medium">My Work</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">Featured Projects</h2>
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">Showing my best work and achievements</p>
+                <p className="text-lg text-white/60 max-w-2xl mx-auto">Two live platforms in production for Saving Grace Education Group, plus full-stack and front-end builds from my own portfolio</p>
             </div>
         </FadeIn>
 
@@ -130,7 +129,7 @@ const Projects = () => {
                     className="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
                 >
                     <div className="flex gap-6 pb-4">
-                        {filteredProjects.map((project, index) => (
+                        {filteredProjects.map((project) => (
                             <div
                                 key={project.id}
                                 data-card
