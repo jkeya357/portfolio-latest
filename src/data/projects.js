@@ -25,6 +25,28 @@ export const projects = [
 
   {
     id: 3,
+    title: 'Saving Grace Learn to Read',
+    description: 'An interactive, self-paced learn-to-read programme for South African Foundation Phase learners (Grade R to 3, with Grades 4 to 6 beyond). Children learn letters, sounds, phonics, blending and comprehension through hands-on lessons with read-aloud audio, in English and Afrikaans and aligned to the CAPS curriculum. Includes a parent login and dashboard, PayFast subscriptions with the first two lessons of every grade free, and the Sunbird Readers reading scheme. Built with Vite and deployed to AWS S3 behind CloudFront.',
+    image: '/images/projects/learnToRead.png',
+    category: 'Live Products',
+    technologies: ['TypeScript', 'React', 'Vite', 'Tailwind', 'PayFast', 'AWS S3', 'CloudFront'],
+    demo: 'https://savinggracelearntoread.co.za/',
+    metrics: 'In production · 2026 · Saving Grace Education Group'
+  },
+
+  {
+    id: 4,
+    title: 'Saving Grace AI Website',
+    description: 'The public website for Saving Grace AI, the CAPS-aligned AI tutor for Grades 1 to 12. Presents the three learning functions (homework help, test and exam readiness, and the conversational tutor Grace), subjects, pricing and a three-day free trial, and links registration, login and the learner dashboard straight into the AI Tutor app. Built on WordPress and served through CloudFront, with SEO tooling and Google Site Kit analytics.',
+    image: '/images/projects/aiTutorSite.png',
+    category: 'Live Products',
+    technologies: ['WordPress', 'PHP', 'JavaScript', 'CSS', 'CloudFront', 'SEO'],
+    demo: 'http://savinggraceaitutor.co.za/',
+    metrics: 'In production · 2026 · Saving Grace Education Group'
+  },
+
+  {
+    id: 5,
     title: 'Banking App',
     description: 'A full-stack digital banking application that supports user authentication, account management, and financial transactions. Built with a Java backend and a modern React/Next.js frontend, using PostgreSQL for secure and reliable data persistence.',
     image: '/images/projects/bankingApp.png',
@@ -35,7 +57,7 @@ export const projects = [
   },
 
   {
-    id: 4,
+    id: 6,
     title: 'Expense App',
     description: 'A full-stack expense tracking application that allows users to record, categorize, and manage their daily expenses. Built with Node.js and MongoDB on the backend and a responsive React/Next.js frontend with Redux for state management.',
     image: '/images/projects/expenseApp.png',
@@ -46,7 +68,7 @@ export const projects = [
   },
 
   {
-    id: 5,
+    id: 7,
     title: 'Blog App',
     description: 'A full-stack blogging platform that enables users to create, edit, and publish posts with persistent storage. Developed using Java and PostgreSQL on the backend and a React frontend for a smooth content management experience.',
     image: '/images/projects/blogApp.png',
@@ -57,7 +79,7 @@ export const projects = [
   },
 
   {
-    id: 6,
+    id: 8,
     title: 'AI Dental-Assistant',
     description: 'An AI-powered dental assistant web app with authenticated patient accounts and a clean, responsive interface. Built with Next.js and React on a Postgres-backed API, styled with Tailwind and secured with Clerk authentication.',
     image: '/images/projects/dental-Ai.png',
@@ -68,7 +90,7 @@ export const projects = [
   },
 
   {
-    id: 7,
+    id: 9,
     title: 'Netflix App',
     description: 'A Netflix-inspired web application that showcases movies and TV shows with a clean, responsive UI. Built using React and Firebase for authentication and data handling, focusing on modern layout and user experience.',
     image: '/images/projects/netflix-project.png',
@@ -79,7 +101,7 @@ export const projects = [
   },
 
   {
-    id: 8,
+    id: 10,
     title: 'YouTube App',
     description: 'A YouTube-style video browsing application built with React, HTML, and CSS. Focused on recreating core UI components and layouts, demonstrating responsive design and front-end fundamentals.',
     image: '/images/projects/youtube-project.png',
