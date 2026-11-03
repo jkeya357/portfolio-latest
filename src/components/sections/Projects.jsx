@@ -2,12 +2,14 @@ import React,{ useState, useRef } from "react"
 import {categories, projects} from "../../data/projects"
 import { Briefcase, Target, Globe, Zap, Rocket, ChevronLeft, ChevronRight } from "lucide-react"
 import ProjectCard from "../ui/ProjectCard"
+import ProjectModal from "../ui/ProjectModal"
 import FadeIn from "../animations/FadeIn"
 
 const Projects = () => {
 
     const [activeCategory, setActiveCategory] = useState('All')
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [selectedProject, setSelectedProject] = useState(null)
     const scrollContainerRef = useRef(null)
 
     const filteredProjects = activeCategory === 'All' 
@@ -135,7 +137,7 @@ const Projects = () => {
                                 data-card
                                 className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start"
                             >
-                                <ProjectCard project={project}/>
+                                <ProjectCard project={project} onOpen={setSelectedProject}/>
                             </div>
                         ))}
                     </div>
@@ -179,6 +181,7 @@ const Projects = () => {
             </div>
         </FadeIn>
     </div>
+    <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)}/>
   </section>
 }
 
