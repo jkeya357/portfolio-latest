@@ -19,13 +19,13 @@ export const SOCIAL_LINKS = {
 
 export const STATS = [
   {label: 'Years Experience', value: '4+'},
-  {label: 'Live Platforms', value: '2'},
+  {label: 'Live Products', value: '4'},
   {label: 'Play Store Release', value: '1'},
   {label: 'Technologies', value: '25+'},
 ]
 
 export const ABOUT_STATS = [
-  {label: 'Live education platforms shipped', value: '2'},
+  {label: 'Live education products shipped', value: '4'},
   {label: 'Android release on Google Play', value: '1'},
   {label: 'Companies worked with', value: '3'},
 ]

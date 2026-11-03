@@ -89,7 +89,7 @@ const Projects = () => {
                     <span className="text:sm text-primary font-medium">My Work</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">Featured Projects</h2>
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">Two live platforms in production for Saving Grace Education Group, plus full-stack and front-end builds from my own portfolio</p>
+                <p className="text-lg text-white/60 max-w-2xl mx-auto">Four live products in production for Saving Grace Education Group, plus full-stack and front-end builds from my own portfolio</p>
             </div>
         </FadeIn>
 
