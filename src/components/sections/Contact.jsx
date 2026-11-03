@@ -10,12 +10,23 @@ const Contact = () => {
     const [message, setMessage] = useState('')
 
     const [status, setStatus] = useState({type: '', message: ''})
+    const [isSending, setIsSending] = useState(false)
 
-    const handleSubmit = (e) => {
+    // Web3Forms delivers submissions straight to your inbox. Get a free access key at
+    // https://web3forms.com (no account needed) and put it in .env as VITE_WEB3FORMS_KEY.
+    const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
+
+    const openMailClient = () => {
+        const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+        const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`)
+        window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if(!name || !email){
-            return setStatus({type: 'error', message: 'Please fill in all fields'})
+        if(!name.trim() || !email.trim() || !message.trim()){
+            return setStatus({type: 'error', message: 'Please fill in your name, email and message'})
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -24,12 +35,54 @@ const Contact = () => {
             return
         }
 
-        setStatus({type: 'success', message: 'Message sent successfully!'})
-        setName('')
-        setEmail('')
-        setMessage('')
+        // Honeypot: real users never see or fill this field
+        if(e.target.botcheck?.checked){
+            return
+        }
 
-        setTimeout(() => setStatus({type: '', message: ''}), 5000)
+        if(!WEB3FORMS_KEY){
+            openMailClient()
+            setStatus({type: 'success', message: 'Opening your email app with the message pre-filled.'})
+            return
+        }
+
+        setIsSending(true)
+        setStatus({type: '', message: ''})
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_KEY,
+                    subject: `Portfolio enquiry from ${name}`,
+                    from_name: 'Portfolio Contact Form',
+                    name,
+                    email,
+                    message,
+                }),
+            })
+
+            const result = await response.json()
+
+            if(!response.ok || !result.success){
+                throw new Error(result.message || 'Submission failed')
+            }
+
+            setStatus({type: 'success', message: 'Message sent! I will get back to you soon.'})
+            setName('')
+            setEmail('')
+            setMessage('')
+        } catch (error) {
+            console.error('Contact form error:', error)
+            setStatus({
+                type: 'error',
+                message: `Sorry, the message could not be sent. Please email me directly at ${PERSONAL_INFO.email}.`,
+            })
+        } finally {
+            setIsSending(false)
+            setTimeout(() => setStatus({type: '', message: ''}), 8000)
+        }
     }
 
     const socialIcons = {
@@ -66,6 +119,14 @@ const Contact = () => {
                     <div className='bg-white/5 border-white/10 rounded-2xl p-8'>
                         <form className="space-y-6" onSubmit={handleSubmit}
                     >
+                        <input
+                            type='checkbox'
+                            name='botcheck'
+                            tabIndex={-1}
+                            autoComplete='off'
+                            aria-hidden='true'
+                            className='hidden'
+                        />
                         <div>
                             <label htmlFor="name" className='block text-sm font-medium text-white/80 mb-2'>
                                 Name
@@ -111,14 +172,17 @@ const Contact = () => {
 
                         <button
                             type='submit'
-                            className='w-full px-6 py-3 bg-linear-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group'
+                            disabled={isSending}
+                            className='w-full px-6 py-3 bg-linear-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed'
                         >
-                            <span>Send Message</span>
-                            <Send className='w-5 h-5 group-hover:translate-x-1 transition-transform duration-300'/>
+                            <span>{isSending ? 'Sending...' : 'Send Message'}</span>
+                            <Send className={`w-5 h-5 transition-transform duration-300 ${isSending ? 'animate-pulse' : 'group-hover:translate-x-1'}`}/>
                         </button>
 
                         {status.message && (
                             <div
+                                role='status'
+                                aria-live='polite'
                                 className={`p-4 rounded-xl ${status.type === 'success' 
                                     ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
                                     : 'bg-red-50/10 border border-red-500/20 text-red-400'}`}

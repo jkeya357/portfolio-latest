@@ -1,16 +1,34 @@
-# React + Vite
+# Joao Keya — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio built with React 19, Vite and Tailwind CSS 4.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Contact form
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The contact form sends messages through [Web3Forms](https://web3forms.com), which forwards each submission to your inbox.
 
-## Expanding the ESLint configuration
+1. Go to https://web3forms.com, enter the email address that should receive messages, and copy the access key they send you.
+2. Copy `.env.example` to `.env` and paste the key as `VITE_WEB3FORMS_KEY`.
+3. In Vercel, add the same variable under **Settings → Environment Variables** and redeploy.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Until a key is configured the form falls back to opening the visitor's email app with the message pre-filled, so nothing is lost.
+
+Submissions can also be viewed in the Web3Forms dashboard if you create a free account with the same email.
+
+## Content
+
+All text lives in data files so it can be edited without touching components:
+
+- `src/utils/constants.js` — name, title, bio, stats, nav links, resume path
+- `src/data/projects.js` — project cards and modal content
+- `src/data/experience.js` — work history, education, working principles
+- `src/data/skills.js` — skill groups
+- `src/data/services.js` — services section
+
+Project screenshots live in `public/images/projects/` and the downloadable CV in `public/`.
